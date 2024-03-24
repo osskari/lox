@@ -1,3 +1,5 @@
+package com.osskari.lox;
+
 public class Token {
     final TokenType type;
     final String lexeme;
