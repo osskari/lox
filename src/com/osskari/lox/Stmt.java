@@ -103,5 +103,6 @@ abstract class Stmt {
         }
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     abstract <R> R accept(Visitor<R> visitor);
 }

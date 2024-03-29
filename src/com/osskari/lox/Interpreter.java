@@ -53,7 +53,7 @@ public class Interpreter implements
                 }
 
                 if (left instanceof String && right instanceof String) {
-                    return (String) left + (String) right;
+                    return left + (String) right;
                 }
 
                 if (left instanceof String || right instanceof String) {

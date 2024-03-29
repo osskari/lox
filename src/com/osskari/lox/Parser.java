@@ -1,6 +1,5 @@
 package com.osskari.lox;
 
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -173,7 +172,7 @@ class Parser {
             Expr right = assignment();
 
             if (left instanceof Expr.Variable) {
-                Token name = ((Expr.Variable)left).name;
+                Token name = ((Expr.Variable) left).name;
                 return new Expr.Assign(name, right);
             }
 
@@ -185,7 +184,7 @@ class Parser {
     private Expr or() {
         Expr left = and();
 
-        while (match(TokenType.OR)) {
+        if (match(TokenType.OR)) {
             Token operator = previous();
             Expr right = and();
             return new Expr.Logical(left, operator, right);
@@ -197,7 +196,7 @@ class Parser {
     private Expr and() {
         Expr left = equality();
 
-        while (match(TokenType.AND)) {
+         if (match(TokenType.AND)) {
             Token operator = previous();
             Expr right = equality();
             return new Expr.Logical(left, operator, right);
