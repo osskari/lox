@@ -12,13 +12,16 @@ parameters     → IDENTIFIER ("," IDENTIFIER)* ;
 
 varDecl        → "var" IDENTIFIER ( "=" expression )? ";" ;
 
-statement      → exprStmt
+statement      → classDecl
+               | exprStmt
                | forStmt
                | ifStmt
                | printStmt
                | returnStmt
                | whileStmt
                | block ;
+
+classDecl      → "class" IDENTIFIER "{" function* "}" ;
 
 exprStmt       → expression ";" ;
 
@@ -36,8 +39,7 @@ block          → "{" declaration* "}"
 
 expression     → assignment ;
 
-assignment     → IDENTIFIER "=" assignment
-               | equality
+assignment     → ( call "." )? IDENTIFIER "=" assignment
                | logicOr ;
 
 equality       → comparison ( ( "!=" | "==" ) comparison )* ;
@@ -55,7 +57,7 @@ factor         → unary ( ( "/" | "*" ) unary )* ;
 unary          → ( "!" | "-" ) unary
                | call ;
 
-call           → primary ( "(" arguments? ")" )* ;
+call           → primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
 
 primary        → NUMBER | STRING
                | "true" | "false" | "nil"
