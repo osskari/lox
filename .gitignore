@@ -30,3 +30,6 @@ bin/
 
 test.lox
 program.lox
+
+# CLox build output
+CLox/build/*
