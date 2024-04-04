@@ -4,8 +4,15 @@
 #include "common.h"
 #include "value.h"
 
+#define STACK_MAX 256
+
 typedef enum {
   OP_CONSTANT,
+  OP_ADD,
+  OP_SUBTRACT,
+  OP_MULTIPLY,
+  OP_DIVIDE,
+  OP_NEGATE,
   OP_RETURN,
 } OpCode;
 
