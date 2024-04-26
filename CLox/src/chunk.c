@@ -1,9 +1,7 @@
-#include <stdint.h>
 #include <stdlib.h>
 
 #include "chunk.h"
 #include "memory.h"
-#include "value.h"
 
 void initChunk(Chunk *chunk) {
   chunk->count = 0;
@@ -16,7 +14,6 @@ void initChunk(Chunk *chunk) {
 void freeChunk(Chunk *chunk) {
   FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
   FREE_ARRAY(int, chunk->lines, chunk->capacity);
-  freeValueArray(&chunk->constants);
   initChunk(chunk);
 }
 
